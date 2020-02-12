@@ -23,7 +23,7 @@ winenv() {
 
 PROGFILES_PATH="$(winepath -u "$(winenv %PROGRAMFILES%)")"
 
-INNO_BIN="Inno Setup 5/ISCC.exe"
+INNO_BIN="Inno Setup 6/ISCC.exe"
 INNO_PATH="${PROGFILES_PATH}/${INNO_BIN}"
 
 eval set -- "$(winpaths "$@")"
