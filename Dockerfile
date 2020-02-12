@@ -1,5 +1,4 @@
-FROM amake/wine:latest
-MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
+FROM xanter/wine:latest
 
 USER root
 
@@ -20,14 +19,9 @@ ENV PATH $PATH:/opt/bin
 USER xclient
 
 # Install Inno Setup binaries
-RUN curl -SL "http://files.jrsoftware.org/is/5/innosetup-5.6.1-unicode.exe" -o is.exe \
+RUN curl -SL "http://files.jrsoftware.org/is/6/innosetup-6.0.3.exe" -o is.exe \
     && wine-x11-run wine is.exe /SP- /VERYSILENT \
     && rm is.exe
-
-# Install unofficial languages
-RUN cd "/home/xclient/.wine/drive_c/Program Files/Inno Setup 5/Languages" \
-    && curl -L "https://api.github.com/repos/jrsoftware/issrc/tarball/29b1e8e8ebe7cf96ca854a1d6be2ae7af7f8018d" \
-    | tar xz --strip-components=4 --wildcards "*/Files/Languages/Unofficial/*.isl"
 
 WORKDIR /work
 ENTRYPOINT ["wine-x11-run", "iscc"]
