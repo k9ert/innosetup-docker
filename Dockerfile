@@ -24,4 +24,5 @@ RUN curl -SL "http://files.jrsoftware.org/is/6/innosetup-6.0.3.exe" -o is.exe \
     && rm is.exe
 
 WORKDIR /work
-ENTRYPOINT ["wine-x11-run", "iscc"]
+# ENTRYPOINT ["wine-x11-run", "iscc"]
+ENTRYPOINT ["iscc"]
