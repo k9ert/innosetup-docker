@@ -19,7 +19,7 @@ ENV PATH $PATH:/opt/bin
 USER xclient
 
 # Install Inno Setup binaries
-RUN curl -SL "http://files.jrsoftware.org/is/6/innosetup-6.0.3.exe" -o is.exe \
+RUN curl -SL "http://files.jrsoftware.org/is/6/innosetup-6.0.4.exe" -o is.exe \
     && wine-x11-run wine is.exe /SP- /VERYSILENT /ALLUSERS /SUPPRESSMSGBOXES \
     && rm is.exe
 
@@ -50,7 +50,7 @@ RUN chmod +x /opt/bin/*
 ENV PATH $PATH:/opt/bin
 
 COPY --from=inno /home/xclient/.wine /home/xclient/.wine
-RUN chown xclient:xusers -R /home/xclient/.wine 
+RUN chown xclient:xusers -R /home/xclient/.wine
 
 # Wine really doesn't like to be run as root, so let's use a non-root user
 USER xclient
