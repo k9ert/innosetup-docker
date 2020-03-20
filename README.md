@@ -13,7 +13,7 @@ Run in interactive mode with your source root bound to `/work`; specify your
 setup script as the command:
 
 ```sh
-docker run --rm -i -v $PWD:/work amake/innosetup helloworld.iss
+docker run --rm -i -v $PWD:/work xanter/innosetup helloworld.iss
 ```
 
 Put the following wrapper script in your PATH as e.g. `iscc` to be able to run
@@ -22,7 +22,7 @@ just `iscc helloworld.iss`:
 ```sh
 #!/usr/bin/env bash
 
-exec docker run --rm -i -v $PWD:/work amake/innosetup "$@"
+exec docker run --rm -i -v $PWD:/work xanter/innosetup "$@"
 ```
 
 ## Important notes
