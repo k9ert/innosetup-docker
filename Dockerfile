@@ -51,7 +51,8 @@ RUN chmod +x /opt/bin/*
 ENV PATH $PATH:/opt/bin
 
 COPY --from=inno /home/xclient/.wine /home/xclient/.wine
-RUN chown xclient:xusers -R /home/xclient/.wine
+RUN mkdir /work \
+    && chown xclient:xusers -R /home/xclient/.wine /work
 
 # Wine really doesn't like to be run as root, so let's use a non-root user
 USER xclient
