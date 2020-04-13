@@ -51,14 +51,13 @@ RUN chmod +x /opt/bin/*
 ENV PATH $PATH:/opt/bin
 
 COPY --from=inno /home/xclient/.wine /home/xclient/.wine
-RUN chown xclient:xusers -R /home/xclient/.wine /mnt
+# Run this statement in your cicd on the folder you are running the iscc command from.
+# 'sudo chown xclient:xusers -R /home/xclient/.wine /where/files/mounted && cd /where/files/mounted && iscc file.iss'
+RUN apt-get update && apt-get install sudo -y 
+RUN echo 'xclient ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Wine really doesn't like to be run as root, so let's use a non-root user
 USER xclient
 ENV HOME /home/xclient
 ENV WINEPREFIX /home/xclient/.wine
 ENV WINEARCH win32
-
-WORKDIR /mnt
-# ENTRYPOINT ["wine-x11-run", "iscc"]
-# ENTRYPOINT ["iscc"]
