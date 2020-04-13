@@ -2,6 +2,8 @@
 An easy way to create Inno Setup installer packages for Microsoft Windows
 directly from your Linux or macOS box.
 
+This fork is more specifcally around making this run better in gitlab ci.
+
 ## Provided core packages
 This image provides the following core packages in addition to the ones
 contained in the parent images:

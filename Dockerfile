@@ -51,8 +51,7 @@ RUN chmod +x /opt/bin/*
 ENV PATH $PATH:/opt/bin
 
 COPY --from=inno /home/xclient/.wine /home/xclient/.wine
-RUN mkdir /work \
-    && chown xclient:xusers -R /home/xclient/.wine /work
+RUN chown xclient:xusers -R /home/xclient/.wine /mnt
 
 # Wine really doesn't like to be run as root, so let's use a non-root user
 USER xclient
@@ -60,6 +59,6 @@ ENV HOME /home/xclient
 ENV WINEPREFIX /home/xclient/.wine
 ENV WINEARCH win32
 
-WORKDIR /work
+WORKDIR /mnt
 # ENTRYPOINT ["wine-x11-run", "iscc"]
-ENTRYPOINT ["iscc"]
+# ENTRYPOINT ["iscc"]
