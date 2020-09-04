@@ -61,3 +61,4 @@ USER xclient
 ENV HOME /home/xclient
 ENV WINEPREFIX /home/xclient/.wine
 ENV WINEARCH win32
+RUN sudo chown -R xclient:xusers /home/xclient/.wine
